@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+
+            padding: 0;
+            margin: 0;
+        }
+
+        .ludo {
+            display: grid;
+            grid-template-columns: repeat(15, 40px);
+            grid-template-rows: repeat(15, 40px);
+            height: 610px;
+            border: 10px solid rgb(201, 21, 218);
+            width: 610px;
+            background-color: black;
+            gap: 1px;
+            overflow: hidden;
+            
+
+
+        }
+
+        .box {
+
+            background-color: rgb(253, 253, 253);
+
+
+        }
+
+        .rbox {
+
+            grid-row: 1 / span 6;
+            grid-column: 1 / span 6;
+            background-color: red;
+
+        }
+
+        .gbox {
+
+            grid-row: 10 / span 15;
+            grid-column: 1 / span 6;
+            background-color: green;
+
+        }
+
+
+        .bbox {
+
+            grid-row: 10 / span 15;
+            grid-column: 10 / span 15;
+            background-color: blue;
+
+        }
+
+        .ybox {
+
+            grid-row: 1 / span 6;
+            grid-column: 10 / span 15;
+            background-color: yellow;
+
+        }
+
+      
+        .wbox{
+            grid-row: 7 /span 3;
+    grid-column: 7 /span 3;
+            background-color: rgb(20, 112, 148);
+            DISPLAY: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-family: monospace;
+    color: #ff0ceb;
+}
+      
+
+        .goti{
+
+            background-color: black;
+    border: 0.2 solid white;
+    border-radius: 50%;
+    width: 40px;
+    margin: 37px;
+    height: 40px;
+
+        }
+        .goti_set{
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+    
+    </style>
+
+
+</head>
+
+<body>
+
+<center>
+    <div class="ludo">
+
+        <!-- here playerbox -->
+        <div class="box rbox goti_set">
+
+            <div class="goti"></div>
+            <div class="goti"></div>
+            <div class="goti"></div>
+            <div class="goti"></div>
+
+        </div>
+        <div class="box gbox goti_set">
+            <div class="goti"></div>
+            <div class="goti"></div>
+            <div class="goti"></div>
+            <div class="goti"></div>
+
+
+
+        </div>
+        <div class="box bbox goti_set">
+            <div class="goti"></div>
+            <div class="goti"></div>
+            <div class="goti"></div>
+            <div class="goti"></div>
+        </div>
+        <div class="box ybox goti_set">
+            <div class="goti"></div>
+            <div class="goti"></div>
+            <div class="goti"></div>
+            <div class="goti"></div>
+
+        </div>
+
+<!-- winner box of all player -->
+        <div class="box wbox">
+            <h1>WINNER</h1>
+
+        </div>
+
+
+<!-- winner box of all player -->
+        
+  
+     
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        
+        
+
+
+
+
+
+    </div>
+
+
+</center>
+
+    
+
+</body>
+
+</html>
