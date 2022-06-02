@@ -109,11 +109,24 @@
         .red_piece {
             background-color: var(--player_red);
         }
+        .red_winner_zone,.red_stop_box{
+            background-color: var(--player_red)
+        }
+ .green_winner_zone,.green_stop_box{
+            background-color: var(--player_green)
+        }
+ .yellow_winner_zone,.yellow_stop_box{
+            background-color: var(--player_yellow)
+        }
+ .blue_winner_zone,.blue_stop_box{
+            background-color: var(--player_blue)
+        }
 
         .map {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(6, 1fr);
+            grid-auto-flow: column;
             gap: 2px;
 
         }
@@ -143,6 +156,11 @@
             justify-content: center;
             height: 40px;
         }
+        .stop_box{
+            background-image: url(../img/stop.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
     </style>
 </head>
 
@@ -160,18 +178,18 @@
             <div class="map">
                 <div class="box"></div>
                 <div class="box"></div>
+                <div class="box stop_box"></div>
                 <div class="box"></div>
                 <div class="box"></div>
                 <div class="box"></div>
                 <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
+                <div class="box green_winner_zone"></div>
+                <div class="box green_winner_zone"></div>
+                <div class="box green_winner_zone"></div>
+                <div class="box green_winner_zone"></div>
+                <div class="box green_winner_zone"></div>
+                 <div class="box"></div>
+                <div class="box green_stop_box stop_box"></div>
                 <div class="box"></div>
                 <div class="box"></div>
                 <div class="box"></div>
@@ -189,6 +207,29 @@
             <!-- here winner box    -->
             <div class="box winnerBox"></div>
             <div class="box"></div>
+            <div class="box stop_box red_stop_box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box stop_box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+      
+            <div class="box red_winner_zone"></div>
+            <div class="box red_winner_zone"></div>
+            <div class="box red_winner_zone"></div>
+            <div class="box red_winner_zone"></div>
+            <div class="box red_winner_zone"></div>
+            <div class="box yellow_winner_zone"></div>
+            <div class="box yellow_winner_zone"></div>
+            <div class="box yellow_winner_zone"></div>
+            <div class="box yellow_winner_zone"></div>
+            <div class="box yellow_winner_zone"></div>
             <div class="box"></div>
             <div class="box"></div>
             <div class="box"></div>
@@ -200,29 +241,7 @@
             <div class="box"></div>
             <div class="box"></div>
             <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+            <div class="box yellow_stop_box stop_box"></div>
             <div class="box"></div>
 
 
@@ -241,18 +260,18 @@
                 <div class="box"></div>
                 <div class="box"></div>
                 <div class="box"></div>
+                <div class="box stop_box blue_stop_box"></div>
+                <div class="box"></div>
+                <div class="box blue_winner_zone"></div>
+                <div class="box blue_winner_zone"></div>
+                <div class="box blue_winner_zone"></div>
+                <div class="box blue_winner_zone"></div>
+                <div class="box blue_winner_zone"></div>
                 <div class="box"></div>
                 <div class="box"></div>
                 <div class="box"></div>
                 <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
+                <div class="box stop_box"></div>
                 <div class="box"></div>
                 <div class="box"></div>
 
