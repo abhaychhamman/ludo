@@ -238,6 +238,8 @@
 
       border: 5px solid black !important;
     }
+
+    
   </style>
 </head>
 
@@ -422,34 +424,10 @@
   let sub_box = document.getElementsByClassName('sub_box')
   let start_goti_point = document.getElementsByClassName('start_goti_point')
   let stop_goti_box = document.getElementsByClassName('stop_goti_box')
+  let close_goti = document.getElementsByClassName('close_goti')
+  let goti = document.getElementsByClassName('goti')
   // console.log(start_goti_point)
 
-
-
-  function Dice() {
-
-    return Math.ceil(Math.random() * 10) % 6 + 1;
-
-
-  }
-  function goti_active(attr) {
-
-
-    attr.style.border = "5px solid #ab00c9";
-    attr.style.borderRadius = "50%";
-
-
-
-  }
-  function goti_deactive(attr) {
-
-
-    attr.style.border = "none";
-    attr.style.borderRadius = "none";
-
-
-  }
-  // variables and array define here 
 
   let arr = [43, 42, 41, 40, 39, 32, 31, 30, 29, 28, 27, 25, 13, 14, 15, 16, 17, 18, 5, 4, 3, 2, 1, 0, 6, 7, 8, 9, 10, 11, 12, 19, 20, 21, 21, 22, 23, 24, 26, 38, 37, 36, 35, 34, 33, 46, 47, 48, 49, 50, 51, 45, 44]
   let selectColor = {
@@ -467,17 +445,26 @@ let selectClassColor = {
 0: "bplayermove",
 }
 
+  function Dice() {
 
-
-  for (let i = 0; i < sub_box.length; i++) {
-
-    //  run_goti_box[arr[i]].innerHTML=i
-
-
-
+    return Math.ceil(Math.random() * 10) % 6 + 1;
 
   }
-  function move_goti(player_start_pos,dice_res) {
+  function goti_active(attr) {
+
+
+    attr.style.border = "5px solid #ab00c9";
+    attr.style.borderRadius = "50%";
+  }
+  function goti_deactive(attr) {
+
+    attr.style.border = "1px solid black";
+    attr.style.borderRadius = "50%";
+
+  }
+  // variables and array define here 
+
+function move_goti(player_start_pos,dice_res) {
     // here code for move goti with respect to dice  
     k = 1
     var DOM_img = document.createElement("img");
@@ -500,135 +487,132 @@ let selectClassColor = {
 
   function open_player_goti(value, player_color, player_start_pos) {
 
-    let dice = 6
-
-   
-    
-    for (let l = 0; l < start_goti_point.length; l++) {
-      if (start_goti_point[l].classList[1] == selectClassColor[player_start_pos]) {
-
-        goti_active(start_goti_point[l])
-        start_goti_point[l].addEventListener('click', (e) => {
-
-          console.log(e.target.remove())
-
-          move_goti(player_start_pos,dice)
-          console.log("first")
-
-          //start code here this for loop for all same color   goti deactivate***************
-
-          for (let index = 0; index < start_goti_point.length; index++) {
-
-            goti_deactive(start_goti_point[index])
-
-          }
-
-          for (let index = 0; index < player_color.length; index++) {
-
-            goti_deactive(player_color[index])
-          }
-          //end code here this for loop for all same color   goti deactivate***************
+let dice = 6
 
 
-        })
+
+for (let l = 0; l < start_goti_point.length; l++) {
+    if (start_goti_point[l].classList[1] == selectClassColor[player_start_pos]) {
+
+    goti_active(start_goti_point[l])
+    start_goti_point[l].addEventListener('click', (e) => {
+
+      console.log(e.target.remove())
+
+      move_goti(player_start_pos,dice)
+      console.log("first")
+
+      //start code here this for loop for all same color   goti deactivate***************
+
+      for (let index = 0; index < start_goti_point.length; index++) {
+
+        goti_deactive(start_goti_point[index])
 
       }
 
-    }
-
-
-
-
-
-    // here show the result of dice 
-    show_dice_num.innerHTML = dice
-    show_dice_num.style.display = "block"
-    // open goti also activating here   
-
-
-
-    // for open img or goti 
-    if (dice == 6) {
-
-      step_move_goti = dice
       for (let index = 0; index < player_color.length; index++) {
-        // console.log(player_color[0].classList[0])
-        goti_active(player_color[index])
+
+        goti_deactive(player_color[index])
       }
-
-      // here trying to open goti
-
-
-      goti_set[value].addEventListener('click', (e) => {
-
-        if (e.target.classList[1] == "close_goti" && dice == 6) {
-
-          // e.target.classList.remove("close_goti");
-          e.target.style.display = "none";
-
-
-
-
-
-          // here   open goti and set img  in stop box
-          var DOM_img = document.createElement("img");
-          DOM_img.src = `img/${selectColor[player_start_pos]}`;
-          DOM_img.className = `start_goti_point ${selectClassColor[player_start_pos]}`
-          run_goti_box[arr[player_start_pos]].appendChild(DOM_img);
-
-          for (let index = 0; index < stop_goti_box.length; index++) {
-
-            // here img or goti position set  
-            if (stop_goti_box[index].children.length > 1) {
-              for (let i = 0; i < stop_goti_box[index].children.length; i++) {
-
-                // console.log(stop_goti_box[index].children[i].style.marginLeft = `${3 * i}px`)
-
-              }
-              stop_goti_box[index].style.justifyContent = "start"
-              stop_goti_box[index].style.alignItems = "start"
-
-            }
-          }
-        }
-        //start code here this for loop for all same color   goti deactivate***************
-
-        for (let index = 0; index < start_goti_point.length; index++) {
-
-          goti_deactive(start_goti_point[index])
-
-        }
-
-        for (let index = 0; index < player_color.length; index++) {
-
-          goti_deactive(player_color[index])
-        }
-        //end code here this for loop for all same color   goti deactivate***************
-
-        // here dice value reseting 
-
-        dice = 0;
-      })
-
-
-
-    }
-
-  }
-
-  function event_call_pl(value, player_color, player_start_pos) {
-
-    dice_turn[value].addEventListener('click', (e) => {
-
-
-
-      open_player_goti(value, player_color, player_start_pos)
+      //end code here this for loop for all same color   goti deactivate***************
 
 
     })
 
   }
 
+}
+
+
+// here show the result of dice 
+show_dice_num.innerHTML = dice
+show_dice_num.style.display = "block"
+ 
+
+// for open img or goti 
+if (dice == 6) {
+
+  step_move_goti = dice
+  for (let index = 0; index < player_color.length; index++) {
+    // console.log(player_color[0].classList[0])
+    goti_active(player_color[index])
+  }
+
+  // here trying to open goti
+
+
+  goti_set[value].addEventListener('click', (e) => {
+
+    if (e.target.classList[1] == "close_goti" && dice == 6) {
+
+      // e.target.classList.remove("close_goti");
+    //   e.target.style.display = "none";
+
+      // here   open goti and set img  in stop box
+    //   var DOM_img = document.createElement("img");
+    //   DOM_img.src = `img/${selectColor[player_start_pos]}`;
+    //   DOM_img.className = `start_goti_point ${selectClassColor[player_start_pos]}`
+    //   run_goti_box[arr[player_start_pos]].appendChild(close_goti[0]);
+    //   goti_set[value].innerHTML=""
+    console.log(goti)
+
+      for (let index = 0; index < stop_goti_box.length; index++) {
+
+        // here img or goti position set  
+        if (stop_goti_box[index].children.length > 1) {
+          for (let i = 0; i < stop_goti_box[index].children.length; i++) {
+
+            console.log(stop_goti_box[index].children[i].style.marginLeft = `${3 * i}px`)
+
+          }
+          stop_goti_box[index].style.justifyContent = "start"
+          stop_goti_box[index].style.alignItems = "start"
+
+        }
+      }
+    }
+    //start code here this for loop for all same color   goti deactivate***************
+
+    for (let index = 0; index < start_goti_point.length; index++) {
+
+      goti_deactive(start_goti_point[index])
+
+    }
+
+    for (let index = 0; index < player_color.length; index++) {
+
+      goti_deactive(player_color[index])
+    }
+    //end code here this for loop for all same color   goti deactivate***************
+
+    // here dice value reseting 
+
+    dice = 0;
+  })
+
+
+
+}
+
+}
+
+
+function event_call_pl(value, player_color, player_start_pos) {
+
+    dice_turn[value].addEventListener('click', (e) => {
+
+      open_player_goti(value, player_color, player_start_pos)
+
+    })
+
+  }
+
+
+//   for (let i = 0; i < sub_box.length; i++) {
+
+//     //  run_goti_box[arr[i]].innerHTML=i
+
+//   }
   event_call_pl(0, rgotiimg, 13)
   event_call_pl(1, ggotiimg, 26)
   event_call_pl(2, bgotiimg, 0)
