@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="ludo.css">
     <title>Document</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
         :root {
 
             --player_green: green;
@@ -21,7 +26,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        
+
         }
 
         .ludo_container {
@@ -109,16 +114,24 @@
         .red_piece {
             background-color: var(--player_red);
         }
-        .red_winner_zone,.red_stop_box{
+
+        .red_winner_zone,
+        .red_stop_box {
             background-color: var(--player_red)
         }
- .green_winner_zone,.green_stop_box{
+
+        .green_winner_zone,
+        .green_stop_box {
             background-color: var(--player_green)
         }
- .yellow_winner_zone,.yellow_stop_box{
+
+        .yellow_winner_zone,
+        .yellow_stop_box {
             background-color: var(--player_yellow)
         }
- .blue_winner_zone,.blue_stop_box{
+
+        .blue_winner_zone,
+        .blue_stop_box {
             background-color: var(--player_blue)
         }
 
@@ -156,15 +169,96 @@
             justify-content: center;
             height: 40px;
         }
-        .stop_box{
+
+        .stop_box {
             background-image: url(../img/stop.png);
             background-repeat: no-repeat;
             background-size: contain;
+        }
+
+        .dices {
+            color: #03c3ff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            justify-content: space-evenly;
+            width: 60px;
+            top: 0;
+            left: 0;
+            height: 340px;
+        }
+
+        .dice {
+
+            width: 50px;
+            height: 30px;
+
+            background-color: red;
+            border: 1px solid black;
+
+        }
+
+        .ydice {
+
+
+            background-color: yellow;
+
+
+        }
+
+        .bdice {
+
+
+            background-color: blue;
+
+        }
+
+        .gdice {
+
+            background-color: green;
+
+        }
+
+        #show_dice_num {
+
+            font-size: 40px;
+            background: white;
+            width: 45px;
+            height: 45px;
+            margin: 40px;
+            border-radius: 50%;
+            display: none;
+
+            position: absolute;
+            top: 27%;
+            left: 100%;
+
+        }
+
+        .close_piece ,
+        .open_piece{
+            width: 40px;
+            height: 40px;
+            border: 1px solid black;
+            border-radius: 50%;
+            position: absolute;
+
+
         }
     </style>
 </head>
 
 <body>
+    <div class="dices">
+
+        <div class="rdice dice">red</div>
+        <div class="gdice dice">green</div>
+        <div class="bdice dice">blue</div>
+        <div class="ydice dice">yellow</div>
+        <div id="show_dice_num"></div>
+
+    </div>
 
     <div class="ludo_container">
         <div class="first_grid">
@@ -188,7 +282,7 @@
                 <div class="box green_winner_zone"></div>
                 <div class="box green_winner_zone"></div>
                 <div class="box green_winner_zone"></div>
-                 <div class="box"></div>
+                <div class="box"></div>
                 <div class="box green_stop_box stop_box"></div>
                 <div class="box"></div>
                 <div class="box"></div>
@@ -219,7 +313,7 @@
             <div class="box"></div>
             <div class="box"></div>
             <div class="box"></div>
-      
+
             <div class="box red_winner_zone"></div>
             <div class="box red_winner_zone"></div>
             <div class="box red_winner_zone"></div>
@@ -291,7 +385,103 @@
         </div>
 
 
+
 </body>
-<script src="ludo.js"></script>
+<script>
+
+    let box = document.getElementsByClassName("box");
+    let player = document.getElementsByClassName("player");
+    let redPlayer = document.getElementsByClassName("player_red");
+    let greenPlayer = document.getElementsByClassName("player_green");
+    let bluePlayer = document.getElementsByClassName("player_blue");
+    let yellowPlayer = document.getElementsByClassName("player_yellow");
+    let diceTurn = document.getElementsByClassName('dice')
+    let showDiceNum = document.getElementById('show_dice_num')
+    let piece = document.getElementsByClassName('piece')
+
+    // console.log(player);
+
+    // variable or array or object defined here  
+    let pieceIndex = [20, 21, 22, 23, 24, 5, 4, 3, 2, 1, 0, 6, 12, 13, 14, 15, 16, 17, 25, 26, 27, 28, 29, 30, 42, 54, 53, 52, 51, 50, 49, 67, 68, 69, 70, 71, 72, 66, 60, 59, 58, 57, 56, 55, 48, 47, 46, 45, 44, 43, 31, 19]
+    let selectPiece = ["rgoti.png", "ggoti.png", "bgoti.png", "ygoti.png"]
+    let playerPieces = ["red_piece_img", "green_piece_img", "blue_piece_img", "yellow_piece_img"]
+
+    for (let index = 0; index < 4; index++) {
+        for (let j = 0; j < 4; j++) {
+            piece[4 * index + j].innerHTML = `<img class="close_piece ${playerPieces[index]}" src="../img/${selectPiece[index]}" alt="">`
+
+        }
+    }
+
+
+    function pieceActivate(ele, stopBoxIndex) {
+
+        for (let index = 0; index < ele.length; index++) {
+
+            ele[index].style.border = "4px solid #ae00eb";
+            ele[index].className="open_piece red_piece_img" //close_piece red_piece_img ------open_piece red_piece_img
+        }
+
+        //  box[stopBoxIndex].innerHTML='<img class="close_piece " src="../img/bgoti.png" alt="">'
+
+        // ele.style.border = "5px solid #ab00c9";
+        // ele.style.borderRadius = "50%";
+    }
+
+
+    function dice() {
+
+        return Math.ceil(Math.random() * 10) % 6 + 1;
+
+
+    }
+    function playerSelect(value) {
+        // console.log(player[value]);
+
+    }
+
+
+    function playerDice(value, stopBoxIndex) {
+
+        diceTurn[value].addEventListener('click', () => {
+            diceVal = 6
+            showDiceNum.innerHTML = diceVal
+            // e.target.remove()
+            // console.log(stopBoxIndex);
+            showDiceNum.style.display = "block"
+            // box[stopBoxIndex].innerHTML = `<img class="open_piece" src="../img/${selectPiece[value]}" alt="">`
+            if (diceVal == 6) {
+                ele=document.getElementsByClassName(`${playerPieces[value]}`)
+                pieceActivate(ele, stopBoxIndex)
+                
+                document.addEventListener('click', (e)=>{
+
+                    console.log(e.target)
+
+                })
+            }
+
+            playerSelect(value)
+
+
+        })
+
+    }
+
+    for (let i = 0; i < box.length; i++) {
+
+        //  box[i].innerHTML=i
+        //  box[pieceIndex[i]].innerHTML=i
+
+
+    }
+
+    playerDice(0, 20)
+    playerDice(1, 13)
+    playerDice(2, 59)
+    playerDice(3, 53)
+
+
+</script>
 
 </html>
