@@ -236,8 +236,9 @@
 
         }
 
-        .close_piece ,
-        .open_piece{
+        .close_piece,
+        .open_piece,
+        .can_open_piece {
             width: 40px;
             height: 40px;
             border: 1px solid black;
@@ -245,6 +246,11 @@
             position: absolute;
 
 
+        }
+
+        .open_piece {
+            width: 34px;
+            height: 34px;
         }
     </style>
 </head>
@@ -415,19 +421,32 @@
 
 
     function pieceActivate(ele, stopBoxIndex) {
+        console.log(ele[0].className="abhay")
+        console.log(ele[1].className="abhay")
+        console.log(ele[2].className="abhay")
+        console.log(ele[3].className="abhay")
 
-        for (let index = 0; index < ele.length; index++) {
-
-            ele[index].style.border = "4px solid #ae00eb";
-            ele[index].className="open_piece red_piece_img" //close_piece red_piece_img ------open_piece red_piece_img
-        }
+        // for (let index = 0; index <4; index++) {
+        //     console.log(ele)
+        //     ele[index].style.border = "4px solid #ae00eb";
+        //     ele[index].className = "can_open_piece red_piece_img" //close_piece red_piece_img ------open_piece red_piece_img
+        // }
 
         //  box[stopBoxIndex].innerHTML='<img class="close_piece " src="../img/bgoti.png" alt="">'
 
         // ele.style.border = "5px solid #ab00c9";
         // ele.style.borderRadius = "50%";
     }
+    function pieceDeactivate(ele) {
+      
+        for (let index = 0; index < 4; index++) {
 
+            ele[index].style.border = "1px solid black";
+            ele[index].className = "open_piece red_piece_img" //close_piece red_piece_img ------open_piece red_piece_img
+        }
+
+
+    }
 
     function dice() {
 
@@ -451,14 +470,21 @@
             showDiceNum.style.display = "block"
             // box[stopBoxIndex].innerHTML = `<img class="open_piece" src="../img/${selectPiece[value]}" alt="">`
             if (diceVal == 6) {
-                ele=document.getElementsByClassName(`${playerPieces[value]}`)
+                ele = document.getElementsByClassName(`${playerPieces[value]}`)
                 pieceActivate(ele, stopBoxIndex)
-                
-                document.addEventListener('click', (e)=>{
 
-                    console.log(e.target)
+                // document.addEventListener('click', (e) => {
 
-                })
+                    // if (e.target.classList[0] == "can_open_piece") {
+                        // console.log(e.target.remove())
+                        // box[stopBoxIndex].appendChild(e.target)
+                        // pieceDeactivate(ele)
+
+
+                    // }
+
+
+                // })
             }
 
             playerSelect(value)
