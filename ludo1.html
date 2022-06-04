@@ -492,10 +492,10 @@ let dice = 6
 
 
 for (let l = 0; l < start_goti_point.length; l++) {
-    if (start_goti_point[l].classList[1] == selectClassColor[player_start_pos]) {
-
-    goti_active(start_goti_point[l])
-    start_goti_point[l].addEventListener('click', (e) => {
+  
+  goti_active(start_goti_point[l])
+  start_goti_point[l].addEventListener('click', (e) => {
+      if (start_goti_point[l].classList[1] == selectClassColor[player_start_pos]) {
 
       console.log(e.target.remove())
 
@@ -516,13 +516,11 @@ for (let l = 0; l < start_goti_point.length; l++) {
       }
       //end code here this for loop for all same color   goti deactivate***************
 
-
+    }
     })
 
   }
-
-}
-
+ 
 
 // here show the result of dice 
 show_dice_num.innerHTML = dice
