@@ -531,20 +531,6 @@ let selectClassColor = {
           DOM_img.className = `start_goti_point ${selectClassColor[player_start_pos]}`
           run_goti_box[arr[player_start_pos]].appendChild(DOM_img);
 
-          for (let index = 0; index < stop_goti_box.length; index++) {
-
-            // here img or goti position set  
-            if (stop_goti_box[index].children.length > 1) {
-              for (let i = 0; i < stop_goti_box[index].children.length; i++) {
-
-                // console.log(stop_goti_box[index].children[i].style.marginLeft = `${3 * i}px`)
-
-              }
-              stop_goti_box[index].style.justifyContent = "start "
-              stop_goti_box[index].style.alignItems = "start "
-
-            }
-          }
         }
         //start code here this for loop for all same color   goti deactivate***************
 

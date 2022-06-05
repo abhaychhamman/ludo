@@ -124,37 +124,31 @@ function stopBoxMultPieces() {
 
 
 function playerDice(value, stopBoxIndex) {
-    let b = 1
+
     diceTurn[value].addEventListener('click', () => {
         diceVal = 6
-
+        let count = 1
         ele = document.getElementsByClassName(`${playerPieces[value]}`)
 
         // dice value show in page  
         showDiceNum.innerHTML = diceVal
         showDiceNum.style.display = "block"
+        for (let index = 0; index < openPieceAll.length; index++) {
+            document.addEventListener('click', (e) => {
 
-        for (let index = 0; index < 73; index++) {
-            box[index].addEventListener('click', (e) => {
-
-
-                if (e.target.classList[0] == "open_piece" && b == 1) {
+                if (e.target.classList[0] == "open_piece" && count == 1) {
 
                     pieceDeactivate(ele, value)
-                    console.log(e.target, b)
 
                     // movePiece(e.target, diceVal)
                     // e.target.remove()
-                    b++
 
-
+                    count++
 
                 }
             })
 
         }
-
-
 
 
 
@@ -179,8 +173,7 @@ function playerDice(value, stopBoxIndex) {
                 if (e.target.classList[0] == "can_open_piece" && a == 1 && e.target.classList[0] != "open_piece") {
 
                     box[stopBoxIndex].appendChild(e.target)
-                        // console.log(ele)
-                    console.log(ele)
+
                     openPiece(e.target, value)
                     stopBoxMultPieces()
                     pieceDeactivate(ele, value)
@@ -214,7 +207,7 @@ for (let i = 0; i < 52; i++) {
 
     // box[i].innerHTML = i
 
-    // box[pieceIndex[i]].innerHTML = i
+    box[pieceIndex[i]].innerHTML = i
     box[pieceIndex[i]].className += ` box${i}`
 
 }
